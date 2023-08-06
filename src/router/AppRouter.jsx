@@ -1,8 +1,12 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import { Main } from '../pages/Main'
 import Navs from '../components/Navs'
-import { Banners } from '../components/Banners'
+import { ItemDetails } from '../pages/ItemDetails'
+import { NotFound } from '../pages/NotFound'
+import { Items } from '../pages/Items'
+import { Home } from '../pages/Home'
+import { Login } from '../pages/Login'
+import { Register } from '../pages/Register'
 
 export const AppRouter = () => {
 
@@ -12,9 +16,12 @@ export const AppRouter = () => {
     <>
     
     <Navs/>
-    {/* <Banners/> */}
     <Routes>
-      <Route index to="/" element={<Main/>}/>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/details/:id' element={<ItemDetails/>}/>
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
     
 

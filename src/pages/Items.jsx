@@ -14,6 +14,8 @@ import {BiCartDownload} from 'react-icons/bi'
 
 export const Items = ({secilendata}) => {
 
+  let navigate=useNavigate()
+
   const [products, setProducts] = useState([])
 
   const API_SELECT_PRODUCTS=`https://dummyjson.com/products/category/${secilendata}`
@@ -48,6 +50,7 @@ export const Items = ({secilendata}) => {
 
   return (
     
+  
     <div className='flex flex-wrap justify-center items-center gap-3 my-5'>
 
     {
@@ -61,14 +64,11 @@ export const Items = ({secilendata}) => {
         <div
           className="movie hover:rounded-md"
           id="container"
-          // onClick={() => navigate("/details/" + item?.id)}
+          onClick={() => navigate(`details/${item?.id}`,{state:item})}
           key={item?.id}
 
         >
           <div className="movie-over flex flex-wrap justify-center items-center gap-3">
-            
-            {/* <AiFillEye size={'26px'}/>
-            <BiCartDownload size={'26px'}/> */}
 
             <button className='bg-orange-300 p-3 rounded-lg hover:bg-orange-400'>Add To Basket</button>
             
@@ -86,7 +86,7 @@ export const Items = ({secilendata}) => {
             
             <h5 className='text-md'>{item?.title}</h5>
 
-            <div className='flex flex-wrap justify-center items-center rounded-sm gap-1 bg-white p-2 text-black'>
+            <div className='flex flex-wrap justify-center items-center rounded-sm gap-1 bg-orange-400 p-2 text-black'>
               
               <MdAttachMoney size={'22px'}/>
               {item?.price}

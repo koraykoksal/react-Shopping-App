@@ -43,145 +43,45 @@ function Navs() {
   const navigate = useNavigate()
   return (
     <>
-    <AppBar position="static"  >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-         <ShoppingBasketIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 900,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-           K-Shop
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-<Stack className="menu" >
-              <MenuItem>
-                <Link className="links" to="/">
-                  Home
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link className="links" to="/about">
-                  About
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link className="links" to="/contact">
-                  Contact
-                </Link>
-              </MenuItem>
-            </Stack>
-            </Menu>
-          </Box>
-          <ShoppingBasketIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+      <nav className="bg-white border-gray-200 dark:bg-gray-900">
           
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-           Clarus Shop
-          </Typography>
+      <div className="flex flex-wrap justify-evenly gap-3 items-center">
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
+        <div>
+        {/* <img src="https://www.logo.wine/a/logo/O_Shopping/O_Shopping-Logo.wine.svg" className=" h-24 mr-3" alt="Flowbite Logo" /> */}
+        <img src="https://img.ws.mms.shopee.com.my/c08f6bd387562ff7dcbb2ec5ce1a8c4b" className=" h-20 mr-3" alt="" />
+        </div>  
         
-          <Stack className="menu" direction="row" spacing={2} >
-              <MenuItem >
-                <Link className="link" to="/">
-                  Home
-                </Link>
-              </MenuItem>
-            </Stack>
-          </Box>
-          <Box sx={{ flexGrow: 0, alignItems:"center", padding:"5px 20px ", display:"flex", justifyContent:"space-between"   } } >
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
 
-            <Button  onClick={handleClick} >
-                
-            <Rozet />
+          
+      </div>
 
-            </Button>
+      </nav>
+      <nav className="bg-gray-50 dark:bg-gray-700">
+          <div className="max-w-screen-xl px-4 py-3 mx-auto">
 
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              <div className="flex justify-between items-center">
+
+                  <ul className="flex flex-wrap justify-center items-center gap-2">
+                      <li>
+                          <Link to="/" className='text-md hover:bg-slate-200 hover:rounded-sm p-3'>Home</Link>
+                      </li>
+                      <li>
+                      <Link className='text-md hover:bg-slate-200 hover:rounded-sm p-3' to='/login'>Login</Link>
+                      </li>
+                      <li>
+                      <Link className='text-md hover:bg-slate-200 hover:rounded-sm p-3' to="/register">Register</Link>
+                      </li>
+                  </ul>
+
+                  <ul className='flex justify-center items-end'>
+                  <Rozet/>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+
      </>
   );
 }
