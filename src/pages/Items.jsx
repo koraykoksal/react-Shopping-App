@@ -10,6 +10,8 @@ import axios from 'axios';
 import {MdAttachMoney} from 'react-icons/md'
 import {AiFillEye} from 'react-icons/ai'
 import {BiCartDownload} from 'react-icons/bi'
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '../store/ItemsReducer';
 
 
 export const Items = ({secilendata}) => {
@@ -46,6 +48,7 @@ export const Items = ({secilendata}) => {
     .catch((err)=>console.log(err))
   }
 
+  const dispatch=useDispatch()
 
 
   return (
@@ -70,7 +73,7 @@ export const Items = ({secilendata}) => {
         >
           <div className="movie-over flex flex-wrap justify-center items-center gap-3">
 
-            <button className='bg-orange-300 p-3 rounded-lg hover:bg-orange-400'>Add To Basket</button>
+            <button className='bg-orange-300 p-3 rounded-lg hover:bg-orange-400' onClick={()=>dispatch(addToBasket())}>Add To Basket</button>
             
           </div>
 

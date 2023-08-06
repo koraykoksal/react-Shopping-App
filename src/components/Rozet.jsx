@@ -4,6 +4,9 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -3,
@@ -14,11 +17,15 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 
+
 export default function Rozet() {
+
+  const count = useSelector((state)=>state.items.count)
+
   return (
     <IconButton
     aria-label="cart">
-      <StyledBadge badgeContent={0} >
+      <StyledBadge badgeContent={count} >
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

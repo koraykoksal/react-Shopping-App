@@ -6,6 +6,5 @@ const rootReducer=combineReducers({
     items:itemsReducer,
 })
 
-export const store = createStore(
-    rootReducer,
-)
+// created store
+export const store = createStore(rootReducer)
