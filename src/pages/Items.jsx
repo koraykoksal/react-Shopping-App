@@ -1,18 +1,11 @@
 import React, { useContext,useEffect,useState } from 'react'
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import {MdAttachMoney} from 'react-icons/md'
-import {AiFillEye} from 'react-icons/ai'
-import {BiCartDownload} from 'react-icons/bi'
 import { useDispatch } from 'react-redux';
 import { addToBasket } from '../store/ItemsReducer';
-
+import {BiCartAdd} from 'react-icons/bi'
+import {AiOutlineRead} from 'react-icons/ai'
 
 export const Items = ({secilendata}) => {
 
@@ -62,43 +55,34 @@ export const Items = ({secilendata}) => {
 
         return(
 
+        <div className="max-w-sm flex flex-wrap justify-center items-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
 
-        <div
-          className="movie hover:rounded-md"
-          id="container"
-          onClick={() => navigate(`details/${item?.id}`,{state:item})}
-          key={item?.id}
-
-        >
-          <div className="movie-over flex flex-wrap justify-center items-center gap-3">
-
-            <button className='bg-orange-300 p-3 rounded-lg hover:bg-orange-400' onClick={()=>dispatch(addToBasket())}>Add To Basket</button>
-            
-          </div>
-
-          <img
-            loading="lazy"
-            src={item?.thumbnail}
-            alt="movie-card"
-            width={'100%'}
-            className='bg-cover'
-          />
-          <div className="flex items-center justify-evenly p-1 text-white">
-
-            
-            <h5 className='text-md'>{item?.title}</h5>
-
-            <div className='flex flex-wrap justify-center items-center rounded-sm gap-1 bg-orange-400 p-2 text-black'>
-              
-              <MdAttachMoney size={'22px'}/>
-              {item?.price}
-            
-            </div>
-            
-          </div>
-          
+        <div className='cardImg'>
+          <img className="rounded-t-lg" src={item?.thumbnail} alt="" />
         </div>
+
+        <div className="p-5">
+          <div>
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {item?.title}
+            </h5>
+          </div>
+          <div className="mb-3 font-normal flex flex-wrap justify-center items-center text-gray-700 dark:text-gray-400">
+          <MdAttachMoney size={'22px'}/>
+          {item?.price}
+          </div>
+
+          <div className='flex flex-wrap justify-center items-center gap-2 bg-orange-200 p-3 rounded-md w-32 text-center m-auto hover:bg-orange-300 hover:cursor-pointer'>
+
+          <AiOutlineRead className='hover:text-white' size={'30px'} onClick={()=>navigate(`details/${item?.id}`,{state:item})}/>
+          <BiCartAdd className='hover:text-white' size={'30px'} onClick={()=>dispatch(addToBasket())}/>
+          
+          </div>
+
+        </div>
+      </div>
+      
 
         )
       })

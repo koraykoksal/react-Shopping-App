@@ -39,3 +39,13 @@
   .movie:hover .movie-over {
     transform: translateX(0%);
   }
+
+
+  .cardImg img{
+    object-fit:fill;
+    height: 305px;
+    max-width: 100%;
+    padding: 0.7rem;
+    border-radius: 1rem;
+  }
+
