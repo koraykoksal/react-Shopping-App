@@ -15,7 +15,6 @@ export const Main = () => {
     .then((res)=>{
 
       setcategories(res.data)
-
     })
     .catch((err)=>console.log(err))
   }
@@ -28,7 +27,6 @@ export const Main = () => {
 
 
 
-  console.log("secilen : ",secilendata)
 
   return (
     
@@ -41,8 +39,13 @@ export const Main = () => {
         <select name="" id="" onChange={(e)=>setsecilendata(e.target.value)} className='p-2 w-[300px] border-2 border-inherit rounded-full'>
         {
 
+          
           categories.map((items)=>(
+            
+            
             <option value={items}>{items}</option>
+           
+            
           ))
              
         }      
@@ -51,7 +54,7 @@ export const Main = () => {
 
     </div>
 
-   <Items/>
+   <Items secilendata={secilendata}/>
 
   </>
 

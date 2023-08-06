@@ -1,11 +1,13 @@
 
 
+
+
+
 const initialState = {
 
-    productCategories:[{
-
-    }],
+    productCategories:[],
 }
+
 
 
 export const itemsReducer = (state = initialState, { type, payload }) => {
