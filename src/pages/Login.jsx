@@ -6,7 +6,7 @@ export const Login = () => {
   return (
     
     <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0 mb-10">
       
         <h5 className="flex items-center mb-6 text-2xl font-semibold text-red-700 dark:text-white">Log In</h5>
 

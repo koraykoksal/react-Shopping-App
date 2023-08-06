@@ -75,7 +75,10 @@ function Navs() {
                   </ul>
 
                   <ul className='flex justify-center items-end'>
-                  <Rozet/>
+                    <li>
+                      <Link to="/basket"><Rozet/></Link>
+                    </li>
+                  
                   </ul>
               </div>
           </div>
