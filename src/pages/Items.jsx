@@ -18,7 +18,6 @@ export const Items = ({secilendata}) => {
 
   const dispatch=useDispatch()
 
-  const [data, setData] = useState({})
 
   const API_SELECT_PRODUCTS=`https://dummyjson.com/products/category/${secilendata}`
   const API_ALL_PRODUCTS=`https://dummyjson.com/products`
@@ -33,6 +32,7 @@ export const Items = ({secilendata}) => {
     get_select_Products(API_SELECT_PRODUCTS)
   }, [secilendata])
   
+
 
 
   
@@ -86,6 +86,7 @@ export const Items = ({secilendata}) => {
           <div className='flex flex-wrap justify-center items-center gap-2 bg-orange-200 p-3 rounded-md w-32 text-center m-auto hover:bg-orange-300 hover:cursor-pointer'>
 
           <AiOutlineRead className='hover:text-white' size={'30px'} onClick={()=>navigate(`details/${item?.id}`,{state:item})}/>
+          {/* <BiCartAdd className='hover:text-white' size={'30px'} onClick={()=>dispatch(new_item(item))}/> */}
           <BiCartAdd className='hover:text-white' size={'30px'} onClick={()=>dispatch(new_item(item))}/>
           
           </div>
