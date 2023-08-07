@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { basketClear } from '../store/ItemsReducer'
 
@@ -8,7 +8,21 @@ export const Basket = () => {
 
   const dispatcClear=useDispatch()
 
-  console.log(basketItem)
+  let sumPrice=0;
+
+
+  const calcTotalPrice=()=>{
+    basketItem.map((item)=>(
+      sumPrice += item.itemPrice
+    ))
+  }
+
+  calcTotalPrice();
+
+  // useEffect(() => {
+  //   calcTotalPrice()
+  // }, [])
+  
 
   return (
     
@@ -35,7 +49,7 @@ export const Basket = () => {
         </thead>
 
         {
-          basketItem.map((item)=>(
+          basketItem?.map((item)=>(
 
             <tbody>
               <tr className="bg-white dark:bg-gray-800">
@@ -48,21 +62,24 @@ export const Basket = () => {
                 <td className="px-6 py-4">{item.itemQuantity}</td>
                 <td className="px-6 py-4">${item.itemPrice}</td>
               </tr>
+
             </tbody>
 
-          ))
-        }
-        
-        <tfoot>
-          <tr className="font-semibold text-gray-900 dark:text-white">
-            <th scope="row" className="px-6 py-3 text-base">
-              Total
-            </th>
-            <td className="px-6 py-3">3</td>
-            <td className="px-6 py-3">21,000</td>
-          </tr>
-        </tfoot>
+            
 
+          ))
+
+          
+        }
+            <tfoot>
+              <tr className="font-semibold text-gray-900 dark:text-white">
+                <th scope="row" className="px-6 py-3 text-base">
+                  Total
+                </th>
+                <td className="px-6 py-3">3</td>
+                <td className="px-6 py-3">${sumPrice}</td>
+              </tr>
+            </tfoot> 
       </table>
     </div>
 

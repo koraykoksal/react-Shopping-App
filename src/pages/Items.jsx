@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import {MdAttachMoney} from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux';
-import { addToBasket, successInfo } from '../store/ItemsReducer';
+import { addToBasket, new_item, successInfo } from '../store/ItemsReducer';
 import {BiCartAdd} from 'react-icons/bi'
 import {AiOutlineRead} from 'react-icons/ai'
 import {toastSuccessNotify} from '../helper/ToastNotify'
@@ -17,7 +17,8 @@ export const Items = ({secilendata}) => {
   const [products, setProducts] = useState([])
 
   const dispatch=useDispatch()
-  const disSuccess=useDispatch()
+
+  const [data, setData] = useState({})
 
   const API_SELECT_PRODUCTS=`https://dummyjson.com/products/category/${secilendata}`
   const API_ALL_PRODUCTS=`https://dummyjson.com/products`
@@ -32,6 +33,8 @@ export const Items = ({secilendata}) => {
     get_select_Products(API_SELECT_PRODUCTS)
   }, [secilendata])
   
+
+
   
   //kategori seçildiğinde gelen veriler
   const get_select_Products=(API)=>{
@@ -47,7 +50,9 @@ export const Items = ({secilendata}) => {
     .catch((err)=>console.log(err))
   }
 
-  const status = useSelector((state)=>state.items.success)
+ 
+
+  
 
   return (
     
@@ -81,7 +86,7 @@ export const Items = ({secilendata}) => {
           <div className='flex flex-wrap justify-center items-center gap-2 bg-orange-200 p-3 rounded-md w-32 text-center m-auto hover:bg-orange-300 hover:cursor-pointer'>
 
           <AiOutlineRead className='hover:text-white' size={'30px'} onClick={()=>navigate(`details/${item?.id}`,{state:item})}/>
-          <BiCartAdd className='hover:text-white' size={'30px'} onClick={()=>dispatch(addToBasket())}/>
+          <BiCartAdd className='hover:text-white' size={'30px'} onClick={()=>dispatch(new_item(item))}/>
           
           </div>
 
