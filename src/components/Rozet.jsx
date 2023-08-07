@@ -25,8 +25,8 @@ export default function Rozet() {
   return (
     <IconButton
     aria-label="cart">
-      <StyledBadge badgeContent={count} >
-        <ShoppingCartIcon />
+      <StyledBadge badgeContent={count} className='text-red-600'>
+        <ShoppingCartIcon className='text-black' />
       </StyledBadge>
     </IconButton>
   );

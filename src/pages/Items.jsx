@@ -2,16 +2,22 @@ import React, { useContext,useEffect,useState } from 'react'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import {MdAttachMoney} from 'react-icons/md'
-import { useDispatch } from 'react-redux';
-import { addToBasket } from '../store/ItemsReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToBasket, successInfo } from '../store/ItemsReducer';
 import {BiCartAdd} from 'react-icons/bi'
 import {AiOutlineRead} from 'react-icons/ai'
+import {toastSuccessNotify} from '../helper/ToastNotify'
+
+
 
 export const Items = ({secilendata}) => {
 
   let navigate=useNavigate()
 
   const [products, setProducts] = useState([])
+
+  const dispatch=useDispatch()
+  const disSuccess=useDispatch()
 
   const API_SELECT_PRODUCTS=`https://dummyjson.com/products/category/${secilendata}`
   const API_ALL_PRODUCTS=`https://dummyjson.com/products`
@@ -41,8 +47,7 @@ export const Items = ({secilendata}) => {
     .catch((err)=>console.log(err))
   }
 
-  const dispatch=useDispatch()
-
+  const status = useSelector((state)=>state.items.success)
 
   return (
     
