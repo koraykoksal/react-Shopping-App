@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { basketClear } from '../store/ItemsReducer'
 import {BsCartPlus} from 'react-icons/bs'
 import {AiOutlineDelete} from 'react-icons/ai'
-
+import {AiOutlineMinusCircle} from 'react-icons/ai'
 
 export const Basket = () => {
 
@@ -76,11 +76,12 @@ export const Basket = () => {
                     $ {item.itemPrice}
                 </td>
                 <td className="px-4 py-4 flex flex-wrap justify-center items-center gap-3">
-                    <BsCartPlus size={'25px'} className='hover:cursor-pointer'/>
-
-                    <AiOutlineDelete size={'25px'} className='hover:cursor-pointer'/>
+                    <BsCartPlus size={'25px'} className='hover:cursor-pointer hover:text-blue-500'/>
+                    <AiOutlineMinusCircle size={'25px'} className='hover:cursor-pointer hover:text-orange-500'/>
+                    <AiOutlineDelete size={'25px'} className='hover:cursor-pointer hover:text-red-500'/>
                 </td>
             </tr>
+
             </tbody>
 
             
