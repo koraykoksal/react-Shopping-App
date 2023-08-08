@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { basketClear } from '../store/ItemsReducer'
+import { basketClear, delBasketLine, incBasketItem,addNewLine, dec_line } from '../store/ItemsReducer'
 import {BsCartPlus} from 'react-icons/bs'
 import {AiOutlineDelete} from 'react-icons/ai'
 import {AiOutlineMinusCircle} from 'react-icons/ai'
@@ -8,8 +8,10 @@ import {AiOutlineMinusCircle} from 'react-icons/ai'
 export const Basket = () => {
 
   const basketItem=useSelector((state)=>state.items.products)
+  const [secilenSatir, setsecilenSatir] = useState({})
 
-  const dispatcClear=useDispatch()
+  const dispatch=useDispatch()
+
 
   let sumPrice=0;
   let sumQuantity=0;
@@ -17,7 +19,7 @@ export const Basket = () => {
 
   const calcTotalPrice=()=>{
     basketItem.map((item)=>(
-      sumPrice += item.itemPrice
+      sumPrice += item.itemPrice * item.itemQuantity
     ))
   }
 
@@ -33,6 +35,19 @@ export const Basket = () => {
 
 
   
+  const satirSil=(item)=>{
+
+    dispatch(delBasketLine(item))
+  }
+
+
+  const itemArtır=(item)=>{
+    dispatch(addNewLine(item))
+  }
+  
+  const itemEksilt=(item)=>{
+    dispatch(dec_line(item))
+  }
 
   return (
     
@@ -40,7 +55,7 @@ export const Basket = () => {
 
       {/* clear all items */}
       <div className='p-3'>
-        <button onClick={()=>dispatcClear(basketClear())} className='bg-gray-300 p-1 rounded-md w-[100px] hover:bg-gray-400 hover:text-white'>Clear All</button>
+        <button onClick={()=>dispatch(basketClear())} className='bg-gray-300 p-1 rounded-md w-[100px] hover:bg-gray-400 hover:text-white'>Clear All</button>
       </div>
 
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -73,12 +88,18 @@ export const Basket = () => {
                     {item.itemQuantity}
                 </td>
                 <td className="px-6 py-4 text-center">
-                    $ {item.itemPrice}
+                    $ {item.itemPrice * item?.itemQuantity}
                 </td>
                 <td className="px-4 py-4 flex flex-wrap justify-center items-center gap-3">
-                    <BsCartPlus size={'25px'} className='hover:cursor-pointer hover:text-blue-500'/>
-                    <AiOutlineMinusCircle size={'25px'} className='hover:cursor-pointer hover:text-orange-500'/>
-                    <AiOutlineDelete size={'25px'} className='hover:cursor-pointer hover:text-red-500'/>
+                  
+                    {/* artırma */}
+                    <BsCartPlus size={'25px'} className='hover:cursor-pointer hover:text-blue-500' onClick={()=>itemArtır(item)}/>
+
+                    {/* azaltma */}
+                    <AiOutlineMinusCircle size={'25px'} className='hover:cursor-pointer hover:text-orange-500' onClick={()=>itemEksilt(item)}/>
+
+                    {/* silme */}
+                    <AiOutlineDelete size={'25px'} className='hover:cursor-pointer hover:text-red-500' onClick={()=>satirSil(item)}/>
                 </td>
             </tr>
 
