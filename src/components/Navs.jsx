@@ -50,12 +50,12 @@ function Navs() {
                       <li>
                           <Link to="/" className='text-md hover:bg-slate-200 hover:rounded-sm p-3'>Home</Link>
                       </li>
-                      <li>
+                      {/* <li>
                       <Link className='text-md hover:bg-slate-200 hover:rounded-sm p-3' to='/login'>Login</Link>
                       </li>
                       <li>
                       <Link className='text-md hover:bg-slate-200 hover:rounded-sm p-3' to="/register">Register</Link>
-                      </li>
+                      </li> */}
                   </ul>
 
                   <ul className='flex justify-center items-end'>
